@@ -31,10 +31,19 @@ class _DashboardPageState extends State<DashboardPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('PocketWallet', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+          title: const Text('MorMoney-Wallet', style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           centerTitle: true,
-          backgroundColor: Colors.teal.shade700,
+          backgroundColor: Colors.deepOrange.shade700,
           elevation: 10,
+          actions: [
+          IconButton(
+            icon: Icon(Icons.logout),
+            onPressed: () {
+              // Navigate back to the login page and clear the navigation stack
+              Navigator.pushReplacementNamed(context, '/login');
+            },
+          ),
+        ],
         ),
         body: AnimatedSwitcher( // Smooth transition between pages
           duration: const Duration(milliseconds: 300),
@@ -62,7 +71,7 @@ class _DashboardPageState extends State<DashboardPage> {
             child: BottomNavigationBar(
               currentIndex: _selectedIndex,
               onTap: _onItemTapped,
-              selectedItemColor: Colors.teal.shade800,
+              selectedItemColor: Colors.deepOrange.shade800,
               unselectedItemColor: Colors.grey,
               selectedFontSize: 14,
               unselectedFontSize: 12,
@@ -126,7 +135,7 @@ class DashboardGrid extends StatelessWidget {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 gradient: LinearGradient(
-                  colors: [Colors.teal.shade400, Colors.teal.shade700],
+                  colors: [Colors.deepOrange.shade400, Colors.deepOrange.shade700],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                 ),
@@ -136,7 +145,7 @@ class DashboardGrid extends StatelessWidget {
             const SizedBox(height: 12.0),
             Text(
               label,
-              style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.teal),
+              style: const TextStyle(fontSize: 14.0, fontWeight: FontWeight.w600, color: Colors.deepOrange),
             ),
           ],
         ),

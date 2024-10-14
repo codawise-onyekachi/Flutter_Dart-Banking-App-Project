@@ -14,19 +14,20 @@ class _DepositPageState extends State<DepositPage> {
   String? depositMethod = "Bank Account"; // Variable to store selected deposit method
 
   // Key for the form to manage validation
-  final _formKey = GlobalKey<FormState>();
+  final _depositFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Deposit'), // Title displayed in the AppBar
-        backgroundColor: Colors.teal, // Background color of the AppBar
+        backgroundColor: Colors.deepOrange, // Background color of the AppBar
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Add padding around the content
         child: Form(
-          key: _formKey, // Form key for managing validation
+          key: _depositFormKey , // Form key for managing validation
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
             children: [
@@ -84,7 +85,7 @@ class _DepositPageState extends State<DepositPage> {
               ElevatedButton(
                 onPressed: () {
                   // Validate the form before proceeding with the deposit logic
-                  if (_formKey.currentState!.validate()) {
+                  if (_depositFormKey .currentState!.validate()) {
                     String amount = amountController.text; // Get the amount from input
 
                     // Add your deposit logic here (e.g., API call)
@@ -93,7 +94,7 @@ class _DepositPageState extends State<DepositPage> {
                   }
                 }, // Text displayed on the button
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Background color of the button
+                  backgroundColor: Colors.deepOrange, // Background color of the button
                   padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0), // Padding for the button
                 ),
                 child: Text('Deposit'),

@@ -60,11 +60,11 @@ class PocketBankingApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Pocket Banking',
       theme: ThemeData(
-        primarySwatch: Colors.teal,
+        primarySwatch: Colors.deepOrange,
       ),
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: {
-        '/': (context) => LoginPage(),
+        '/login': (context) => LoginPage(),
         '/dashboard': (context) => DashboardPage(),
         '/register': (context) => RegisterPage(),
         '/paybills': (context) => PayBillsPage(),

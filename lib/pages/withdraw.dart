@@ -23,7 +23,8 @@ class _WithdrawPageState extends State<WithdrawPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Withdraw'), // Title displayed in the AppBar
-        backgroundColor: Colors.teal, // Background color of the AppBar
+        backgroundColor: Colors.deepOrange, // Background color of the AppBar
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Padding around the form content
@@ -105,7 +106,7 @@ class _WithdrawPageState extends State<WithdrawPage> {
                 ));
               }, // Text displayed on the button
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.teal, // Background color of the button
+                backgroundColor: Colors.deepOrange, // Background color of the button
                 padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0), // Padding inside the button
               ),
               child: Text('Withdraw'),

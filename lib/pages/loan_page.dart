@@ -11,7 +11,8 @@ class LoanPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Loan Overview'),
-        backgroundColor: Colors.teal,
+        backgroundColor: Colors.grey,
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -57,7 +58,7 @@ class LoanPage extends StatelessWidget {
                 final amount = _amountController.text;
                 _showLoanConfirmation(context, amount); // Show confirmation dialog
               }, // Button text
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrange),
               child: Text('Apply for Loan'), // Button color
             ),
             const SizedBox(height: 20),

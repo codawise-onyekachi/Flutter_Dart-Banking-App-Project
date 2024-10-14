@@ -8,6 +8,8 @@ class SavingsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Savings'),
+        backgroundColor: Colors.grey, // Background color of the AppBar
+        centerTitle: true, // This centers the title
       ),
       body: const Center(
         child: Column(

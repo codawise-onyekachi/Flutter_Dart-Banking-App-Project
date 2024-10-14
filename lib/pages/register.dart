@@ -13,20 +13,30 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
 
   // Key to manage the form validation
-  final _formKey = GlobalKey<FormState>();
+  final _regFormKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance; // Firebase Auth instance
+
+  //  // Simulating a registration function
+  // void _registerUser() {
+  //   if (_formKey.currentState?.validate() == true) {
+  //     // Simulate registration logic
+  //     // Once the user is registered, redirect to login page
+  //     Navigator.pushReplacementNamed(context, '/login');
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Register to PocketWallet', style: TextStyle(color: Colors.white)), // AppBar title
-        backgroundColor: Colors.teal, // AppBar background color
+        backgroundColor: Colors.deepOrange, // AppBar background color
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Padding around the content
         child: Form(
-          key: _formKey, // Form key for validation
+          key: _regFormKey, // Form key for validation
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center the content vertically
             children: <Widget>[
@@ -82,15 +92,15 @@ class _RegisterPageState extends State<RegisterPage> {
               ElevatedButton(
                 onPressed: () async {
                   // Validate the form before proceeding
-                  if (_formKey.currentState!.validate()) {
+                  if (_regFormKey.currentState!.validate()) {
                     try {
                       // Create a new user with Firebase
                       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
                         email: emailController.text.trim(),
                         password: passwordController.text.trim(),
                       );
-                      // If successful, navigate to the Dashboard
-                      Navigator.pushReplacementNamed(context, '/dashboard');
+                      // If successful, navigate to the login
+                      Navigator.pushReplacementNamed(context, '/login');
                     } on FirebaseAuthException catch (e) {
                       // Handle error during registration
                       String errorMessage;
@@ -107,7 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Button background color
+                  backgroundColor: Colors.deepOrange, // Button background color
                   foregroundColor: Colors.white, // Button text color
                 ),
                 child: Text('Register'), // Button text
@@ -117,10 +127,10 @@ class _RegisterPageState extends State<RegisterPage> {
               // Login link
               TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, '/'); // Navigate back to Login page
+                  Navigator.pushNamed(context, '/login'); // Navigate back to Login page
                 }, // Login link text
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.teal, // Text color
+                  foregroundColor: Colors.deepOrange, // Text color
                 ),
                 child: Text('Already have an account? Login here'),
               ),

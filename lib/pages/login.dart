@@ -13,20 +13,21 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController passwordController = TextEditingController();
 
   // Key to manage the form validation
-  final _formKey = GlobalKey<FormState>();
+  final _loginFormKey = GlobalKey<FormState>();
   final FirebaseAuth _auth = FirebaseAuth.instance; // Firebase Auth instance
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Login to PocketWallet', style: TextStyle(color: Colors.white)), // AppBar title
-        backgroundColor: Colors.teal, // AppBar background color
+        title: Text('Login to MorMoney-Wallet', style: TextStyle(color: Colors.white)), // AppBar title
+        backgroundColor: Colors.deepOrange, // AppBar background color
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Padding around the content
         child: Form(
-          key: _formKey, // Form key for validation
+          key: _loginFormKey, // Form key for validation
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center the content vertically
             children: <Widget>[
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
               ElevatedButton(
                 onPressed: () async {
                   // Validate the form before proceeding
-                  if (_formKey.currentState!.validate()) {
+                  if (_loginFormKey.currentState!.validate()) {
                     try {
                       // Sign in the user with Firebase
                       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
@@ -104,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Button background color
+                  backgroundColor: Colors.deepOrange, // Button background color
                   foregroundColor: Colors.white, // Button text color
                 ),
                 child: Text('Login'), // Button text
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                   Navigator.pushNamed(context, '/register'); // Navigate to Register page
                 }, // Register link text
                 style: TextButton.styleFrom(
-                  foregroundColor: Colors.teal, // Text color
+                  foregroundColor: Colors.deepOrange, // Text color
                 ),
                 child: Text('Don\'t have an account? Register here'),
               ),

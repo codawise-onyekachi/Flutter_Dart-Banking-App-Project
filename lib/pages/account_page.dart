@@ -9,7 +9,8 @@ class AccountPage extends StatelessWidget {
     return Scaffold( // Scaffold provides the basic visual structure for the page
       appBar: AppBar( // AppBar widget for the top bar
         title: const Text('Account Overview'), // Title displayed in the AppBar
-        backgroundColor: Colors.teal, // Background color of the AppBar
+        backgroundColor: Colors.grey, // Background color of the AppBar
+        centerTitle: true, // This centers the title
       ),
       body: Padding( // Padding around the body content
         padding: const EdgeInsets.all(16.0), // Padding value set to 16 pixels on all sides
@@ -18,19 +19,19 @@ class AccountPage extends StatelessWidget {
           children: <Widget>[
             // Displaying account holder's name
             const Text(
-              'Account Holder: Allan Allan', // Text displaying account holder's name
+              'Account Holder: Onyekachi Uzoma', // Text displaying account holder's name
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold), // Styling the text
             ),
             const SizedBox(height: 10), // Spacing between elements
             // Displaying account number
             const Text(
-              'Account Number: 1234567890', // Text displaying account number
+              'Account Number: 0017207842', // Text displaying account number
               style: TextStyle(fontSize: 16), // Styling the text
             ),
             const SizedBox(height: 10), // Spacing between elements
             // Displaying account balance
             const Text(
-              'Account Balance: \$5,000', // Text displaying account balance
+              'Account Balance: \$20,000', // Text displaying account balance
               style: TextStyle(fontSize: 16), // Styling the text
             ),
             const SizedBox(height: 20), // Spacing between elements
@@ -41,11 +42,11 @@ class AccountPage extends StatelessWidget {
             ),
             // ListTile displaying email information
             const ListTile(
-              title: Text('Email: allan@example.com'), // Text displaying email
+              title: Text('Email: onyekachihopeuzoma@gmail.com'), // Text displaying email
             ),
             // ListTile displaying phone information
             const ListTile(
-              title: Text('Phone: +254 778 567-8901'), // Text displaying phone number
+              title: Text('Phone: +2348062718963'), // Text displaying phone number
             ),
             const SizedBox(height: 20), // Spacing between elements
             // Button for editing account settings
@@ -54,7 +55,7 @@ class AccountPage extends StatelessWidget {
                 // Handle account settings logic
                 _showAccountSettings(context); // Call to show account settings dialog
               }, // Button text
-              style: ElevatedButton.styleFrom(backgroundColor: Colors.teal),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrange),
               child: Text('Edit Account Settings'), // Button color
             ),
           ],

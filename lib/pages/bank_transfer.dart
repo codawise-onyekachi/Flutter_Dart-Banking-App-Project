@@ -14,19 +14,20 @@ class _BankTransferPageState extends State<BankTransferPage> {
   final TextEditingController amountController = TextEditingController(); // Controller for transfer amount input
 
   // Key for the form to manage validation
-  final _formKey = GlobalKey<FormState>();
+  final _transferFormKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Bank Transfer'), // Title displayed in the AppBar
-        backgroundColor: Colors.teal, // Background color of the AppBar
+        backgroundColor: Colors.deepOrange, // Background color of the AppBar
+        centerTitle: true, // This centers the title
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Padding around the form content
         child: Form(
-          key: _formKey, // Assign the form key to manage form validation
+          key: _transferFormKey, // Assign the form key to manage form validation
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center, // Center the column's content vertically
             children: [
@@ -73,18 +74,21 @@ class _BankTransferPageState extends State<BankTransferPage> {
                 keyboardType: TextInputType.number, // Numeric keyboard for entering the amount
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return 'Please enter the amount'; // Error message if field is empty
+                    return 'Please enter an amount'; // Error if the field is empty
+                  }
+                  if (double.tryParse(value) == null || double.parse(value) <= 0) {
+                    return 'Please enter a valid amount greater than 0'; // Ensure valid number and non-negative
                   }
                   return null; // No error if the field is valid
                 },
               ),
-              const SizedBox(height: 20.0), // Space between the input fields and button
+              const SizedBox(height: 20.0), // Add space between the fields and button
 
               // Transfer button
               ElevatedButton(
                 onPressed: () {
                   // Validate the form before proceeding with the transfer logic
-                  if (_formKey.currentState!.validate()) {
+                  if (_transferFormKey.currentState!.validate()) {
                     // Logic to handle the bank transfer action when the button is pressed
                     String recipientName = recipientNameController.text; // Get the recipient's name from input
                     String accountNumber = accountNumberController.text; // Get the account number from input
@@ -96,7 +100,7 @@ class _BankTransferPageState extends State<BankTransferPage> {
                   }
                 }, // Text displayed on the button
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.teal, // Background color of the button
+                  backgroundColor: Colors.deepOrange, // Background color of the button
                   padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0), // Padding inside the button
                 ),
                 child: Text('Transfer'),
