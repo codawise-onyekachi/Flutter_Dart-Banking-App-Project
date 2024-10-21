@@ -10,8 +10,10 @@ class DepositPage extends StatefulWidget {
 
 class _DepositPageState extends State<DepositPage> {
   // Controllers to manage the input fields
-  final TextEditingController amountController = TextEditingController(); // Controller for deposit amount input
-  String? depositMethod = "Bank Account"; // Variable to store selected deposit method
+  final TextEditingController amountController =
+      TextEditingController(); // Controller for deposit amount input
+  String? depositMethod =
+      "Bank Account"; // Variable to store selected deposit method
 
   // Key for the form to manage validation
   final _depositFormKey = GlobalKey<FormState>();
@@ -27,33 +29,44 @@ class _DepositPageState extends State<DepositPage> {
       body: Padding(
         padding: const EdgeInsets.all(16.0), // Add padding around the content
         child: Form(
-          key: _depositFormKey , // Form key for managing validation
+          key: _depositFormKey, // Form key for managing validation
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Center the column vertically
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Center the column vertically
             children: [
               // Input field for deposit amount
               TextFormField(
-                controller: amountController, // Connect the controller to the input field
+                controller:
+                    amountController, // Connect the controller to the input field
                 decoration: const InputDecoration(
-                  labelText: 'Deposit Amount', // Label displayed in the input field
-                  border: OutlineInputBorder(), // Outline border style for the input field
+                  labelText:
+                      'Deposit Amount', // Label displayed in the input field
+                  border:
+                      OutlineInputBorder(), // Outline border style for the input field
                 ),
-                keyboardType: TextInputType.number, // Show numeric keyboard for amount input
+                keyboardType: TextInputType
+                    .number, // Show numeric keyboard for amount input
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a deposit amount'; // Error if the field is empty
                   }
-                  return null; // No error if field is valid
+                  if (double.tryParse(value) == null ||
+                      double.parse(value) <= 0) {
+                    return 'Please enter a valid amount greater than 0'; // Ensure valid number and non-negative
+                  }
+                  return null; // No error if the field is valid
                 },
               ),
               const SizedBox(height: 16.0), // Add space between the fields
-              
+
               // Deposit method selection
               DropdownButtonFormField<String>(
                 value: depositMethod,
                 decoration: const InputDecoration(
-                  labelText: 'Deposit Method', // Label displayed in the dropdown
-                  border: OutlineInputBorder(), // Outline border style for the dropdown
+                  labelText:
+                      'Deposit Method', // Label displayed in the dropdown
+                  border:
+                      OutlineInputBorder(), // Outline border style for the dropdown
                 ),
                 items: const [
                   DropdownMenuItem<String>(
@@ -62,7 +75,8 @@ class _DepositPageState extends State<DepositPage> {
                   ),
                   DropdownMenuItem<String>(
                     value: 'Debit/Credit Card',
-                    child: Text('Debit/Credit Card'), // Option for deposit method
+                    child:
+                        Text('Debit/Credit Card'), // Option for deposit method
                   ),
                   // Add more methods as needed
                 ],
@@ -78,24 +92,58 @@ class _DepositPageState extends State<DepositPage> {
                   return null; // No error if field is valid
                 },
               ),
-              
-              const SizedBox(height: 20.0), // Add space between the fields and button
-              
+
+              const SizedBox(
+                  height: 20.0), // Add space between the fields and button
+
               // Deposit button
               ElevatedButton(
                 onPressed: () {
                   // Validate the form before proceeding with the deposit logic
-                  if (_depositFormKey .currentState!.validate()) {
-                    String amount = amountController.text; // Get the amount from input
+                  if (_depositFormKey.currentState!.validate()) {
+                    String amount =
+                        amountController.text; // Get the amount from input
 
                     // Add your deposit logic here (e.g., API call)
-                    print('Depositing $amount via $depositMethod'); // Debug output to console
+                    print(
+                        'Depositing $amount via $depositMethod'); // Debug output to console
                     // Optionally show a confirmation message or navigate to another page
+                    
+                    var message = "";
+                    if (depositMethod == 'Bank Account') {
+                      message = 'Depositing $amount via Bank Account';
+                    } else if (depositMethod == 'Debit/Credit Card') {
+                      message = 'Depositing $amount via Debit/Credit Card';
+                    } else {
+                      message = 'Invalid withdrawal method selected';
+                    }
+
+                    // Show a message with the payment details (for demonstration)
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('Deposit Confirmation'),
+                          content: Text(message),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop(); // Close the dialog
+                              },
+                              child: const Text('OK'), // Button text
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   }
                 }, // Text displayed on the button
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepOrange, // Background color of the button
-                  padding: const EdgeInsets.symmetric(horizontal: 32.0, vertical: 16.0), // Padding for the button
+                  backgroundColor:
+                      Colors.deepOrange, // Background color of the button
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 32.0,
+                      vertical: 16.0), // Padding for the button
                 ),
                 child: Text('Deposit'),
               ),
