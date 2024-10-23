@@ -23,12 +23,12 @@ void main() async {
   // Initialize Firebase
   await Firebase.initializeApp(
       options: const FirebaseOptions(
-    apiKey: "AIzaSyC2iTTtLEhDSWEMBSIp5BDADHzffaZQZNY",
+    apiKey: "AIzaSyDwo8SX1LC6RJsLnJ4Onc5XeG3lya7LAQ4",
     authDomain: "your-auth-domain",
-    projectId: "solop-f7607",
-    storageBucket: "solop-f7607.appspot.com",
-    messagingSenderId: "823239436996",
-    appId: "1:823239436996:android:eac6b8a5ab81a18cddf791",
+    projectId: "flutterdart-18c76",
+    storageBucket: "flutterdart-18c76.appspot.com",
+    messagingSenderId: "41144882451",
+    appId: "1:41144882451:android:82e7454a53ae2fcfb7f6e6",
   ));
   GetIt.instance.registerSingleton<FirebaseService>(
     FirebaseService(),

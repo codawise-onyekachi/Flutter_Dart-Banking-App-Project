@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "823239436996",
-    "project_id": "solop-f7607",
-    "storage_bucket": "solop-f7607.appspot.com"
+    "project_number": "41144882451",
+    "project_id": "flutterdart-18c76",
+    "storage_bucket": "flutterdart-18c76.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:823239436996:android:eac6b8a5ab81a18cddf791",
+        "mobilesdk_app_id": "1:41144882451:android:82e7454a53ae2fcfb7f6e6",
         "android_client_info": {
-          "package_name": "com.demo.pocketbank"
+          "package_name": "com.plp.mormoney_wallet"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyC2iTTtLEhDSWEMBSIp5BDADHzffaZQZNY"
+          "current_key": "AIzaSyDwo8SX1LC6RJsLnJ4Onc5XeG3lya7LAQ4"
         }
       ],
       "services": {
@@ -46,3 +46,4 @@
   ],
   "configuration_version": "1"
 }
+

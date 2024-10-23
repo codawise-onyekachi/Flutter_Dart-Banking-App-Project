@@ -1,6 +1,6 @@
 {
   "firestore": {
-    "rules": "firestore.rules",
+    "rules": "firestore rule",
     "indexes": "firestore.indexes.json"
   },
   "functions": [
@@ -15,5 +15,11 @@
         "*.local"
       ]
     }
-  ]
+  ],
+  "dataconnect": {
+    "source": "dataconnect"
+  },
+  "database": {
+    "rules": "database.rules.json"
+  }
 }
