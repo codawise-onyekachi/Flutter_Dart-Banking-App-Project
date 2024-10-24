@@ -58,7 +58,7 @@ class PocketBankingApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Pocket Banking',
+      title: 'MorMoney Wallet',
       theme: ThemeData(
         primarySwatch: Colors.deepOrange,
       ),
